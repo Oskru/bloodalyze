@@ -1,7 +1,7 @@
 from rest_framework import serializers
 from .models import Testresult
 
-class TodoSerializer(serializers.ModelSerializer):
+class TestresultSerializer(serializers.ModelSerializer):
 
     class Meta:
         model = Testresult
