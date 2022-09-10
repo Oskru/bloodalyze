@@ -18,7 +18,11 @@ from django.urls import path, include
 from testresults import views
 from rest_framework import routers
 
+router = routers.DefaultRouter()
+router.register(r'testresults', views.TestresultView, 'testresult')
+
+
 urlpatterns = [
     path('admin/', admin.site.urls),
-    path('api/', include(routers.urls)),
+    path('api/', include(router.urls)),
 ]
