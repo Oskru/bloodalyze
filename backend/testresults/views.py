@@ -5,6 +5,6 @@ from .models import Testresult
 
 # Create your views here.
 
-class TodoView(viewsets.ModelViewSet):
+class TestresultView(viewsets.ModelViewSet):
     serializer_class = TestresultSerializer
     queryset = Testresult.objects.all()
