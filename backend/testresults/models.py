@@ -16,4 +16,4 @@ class Testresult(models.Model):
     plt_level = models.DecimalField(max_digits=10, decimal_places=2)
 
     def __str__(self):
-        return str(self.date_added)
+        return str("Id: " + str(self.id) + " , " + str(self.date_added))
