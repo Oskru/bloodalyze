@@ -51,7 +51,7 @@ const styles = {
 
 function Loginform() {
 
-  const { register, handleSubmit, watch, setError, clearErrors, formState: { errors } } = useForm({
+  const { register, handleSubmit, formState: { errors } } = useForm({
     mode: 'onChange',
   });
 
