@@ -60,6 +60,7 @@ function Registerform() {
   });
 
   const onSubmit = (data) => {
+    delete data.confirmPassword;
     console.log(data);
   };
 
@@ -139,7 +140,7 @@ function Registerform() {
               style={styles.applyMargin} 
               fullWidth 
               {...register('confirmPassword', { required: true, validate: (val) => {
-                if (watch('password') != val) {
+                if (watch('password') !== val) {
                   return "Your passwords do not match"
                 }
               } })}
