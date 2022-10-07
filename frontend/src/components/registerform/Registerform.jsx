@@ -1,8 +1,7 @@
-import React, { useRef, useState, useEffect } from "react";
+import React, { useState } from "react";
 import { createTheme, ThemeProvider } from '@mui/material/styles';
 import LogoutIcon from '@mui/icons-material/Logout';
 import { useForm } from 'react-hook-form';
-import axios from 'axios';
 import {
   Paper,
   Avatar,
@@ -11,8 +10,6 @@ import {
   Checkbox,
   Button,
   FormControlLabel,
-  Typography,
-  Link,
 } from '@mui/material';
 
 // At least: 8 chars, 1 uppercase, 1 number
@@ -71,9 +68,6 @@ function Registerform() {
   const handleChange = () => {
     setIsChecked(current => !current);
   };
-
-  const apidata = axios.get('api/testresults');
-  console.log(apidata);
   
   return (
     <div style={styles.root}>
