@@ -85,7 +85,7 @@ function Footer() {
           textAlign='center'
           pt={{ xs: 5, sm: 10 }}
           pb={{ xs: 5, sm: 0 }}>
-            Made by Oskar Krupa and Igor Kohsin, {new Date().getFullYear()}
+            Made by Oskar Krupa, {new Date().getFullYear()}
           </Box>
         </Container>
       </Box>    
