@@ -2,6 +2,7 @@ import React, { useState } from "react";
 import { createTheme, ThemeProvider } from '@mui/material/styles';
 import LogoutIcon from '@mui/icons-material/Logout';
 import { useForm } from 'react-hook-form';
+import axios from 'axios';
 import {
   Paper,
   Avatar,
@@ -11,6 +12,7 @@ import {
   Button,
   FormControlLabel,
 } from '@mui/material';
+import { useNavigate } from "react-router-dom";
 
 // At least: 8 chars, 1 uppercase, 1 number
 // Can contain special chars
@@ -59,9 +61,27 @@ function Registerform() {
     mode: 'onChange',
   });
 
-  const onSubmit = (data) => {
+  const navigate = useNavigate();
+  
+  const {error, setError} = useState('');
+
+
+  const onSubmit = async (data) => {
     delete data.confirmPassword;
     console.log(data);
+    try {
+      const url = 'http://localhost:8000/api/users';
+      const {data: res} = await axios.post(url, data);
+      navigate('/login');
+      console.log(res.message);
+    } catch {
+      if(error?.response &&
+        error?.response.status >= 400 &&
+        error?.response.status <= 500
+        ) {
+        setError(error.response.data.message);
+        }
+    }
   };
 
   const [isChecked, setIsChecked] = useState(false);
