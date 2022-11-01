@@ -1,8 +1,10 @@
 import React from "react";
+import { useState } from "react";
 import { useForm } from 'react-hook-form';
 import { createTheme, ThemeProvider } from '@mui/material/styles';
 import LoginIcon from '@mui/icons-material/Login';
 import { Link as RouterLink } from 'react-router-dom';
+import axios from 'axios';
 import {
   Paper,
   Avatar,
@@ -55,7 +57,26 @@ function Loginform() {
     mode: 'onChange',
   });
 
-  const onSubmit = (data) => console.log(data);
+  const {error, setError} = useState('');
+
+  const onSubmit = async (data) => {
+    delete data.rememberPassword;
+    console.log(data);
+    try {
+      const url = 'http://localhost:8000/api/auth';
+      const {data: res} = await axios.post(url, data);
+      localStorage.setItem("token", res.data);
+      window.location = "/";
+    } catch {
+      if (
+        error?.response &&
+        error?.response.status >= 400 &&
+        error?.response.status <= 500
+        ) {
+        setError(error.response.data.message);
+        }
+    }
+  };
 
   return (
     <div style={styles.root}>
