@@ -1,4 +1,3 @@
-// import './Navbar.css';
 import {
   AppBar,
   Toolbar,
@@ -10,9 +9,9 @@ import {
 }
 from '@mui/material';
 
-import { NavLink } from 'react-router-dom';
-
+import { NavLink, useNavigate } from 'react-router-dom';
 import BloodtypeIcon from '@mui/icons-material/Bloodtype';
+import { useEffect, useState } from 'react';
 
 const styles = {
   appBar: {
@@ -31,6 +30,19 @@ const styles = {
 
 function Navbar() {
 
+  const [isLogged, setLogged] = useState(false);  
+
+  useEffect(() => {
+    if (localStorage.getItem('token')) {
+      setLogged(() => true);
+    }
+  }, []);
+
+
+  const handleLogout = () => {
+    localStorage.removeItem('token');
+    setLogged(current => !current);
+  }
   
   return (
     <>
@@ -47,7 +59,11 @@ function Navbar() {
         <Stack direction='row' justifyItems='self-end' alignItems='self-end' justifyContent='right' spacing={2}>
           <Button color='inherit'>Contact</Button>
           <Button color='inherit'>About</Button>
-          <Button LinkComponent={NavLink} to='/login' color='inherit' variant='contained'>Login</Button>
+          { isLogged
+            ? <Button onClick={handleLogout} to='/logout' color='inherit' variant='contained'>Logout</Button>
+            : <Button LinkComponent={NavLink} to='/login' color='inherit' variant='contained'>Login</Button>
+          }
+          
         </Stack>
       </Toolbar>
     </AppBar>
