@@ -33,10 +33,13 @@ const styles = {
 
   root: {
     fontFamily: 'Nunito',
+    overflow: 'hidden',
+    height: '55vh',
   },
 
   mainGrid: {
-    marginTop: '55px',
+    marginTop: '50px',
+    marginBottom: '50px',
   },
 
   paperContainer: {
