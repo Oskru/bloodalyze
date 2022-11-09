@@ -1,4 +1,5 @@
-import React from "react";
+import React from 'react';
+import { useState, useEffect } from 'react';
 // TODO: Make footer links working
 import { Link as RouteLink } from 'react-router-dom'; 
 import {
@@ -17,6 +18,19 @@ const styles = {
 
 // TODO: Make footer viable for my page (change links, grids, think of what i wanna put here)
 function Footer() {
+
+  const [isLogged, setLogged] = useState(false);  
+
+  useEffect(() => {
+    if (localStorage.getItem('token')) {
+      setLogged(() => true);
+    }
+  }, []);
+
+  const handleLogout = () => {
+    localStorage.removeItem('token');
+    setLogged(current => !current);
+  }
 
   return (
     <div style={styles.root}>
@@ -49,12 +63,13 @@ function Footer() {
             <Grid item xs={12} sm={4}>
               <Box borderBottom={1}>Account</Box>
               <Box pt={1}>
-                <Link color='inherit'>
-                  Login
-                </Link>
+                { isLogged 
+                ? <Link color='inherit' onClick={handleLogout}>Logout</Link> 
+                : <Link color='inherit' href='/login'>Login</Link>
+                }
               </Box>
               <Box>
-                <Link color='inherit'>
+                <Link color='inherit' href='/register'>
                   Register
                 </Link>
               </Box>
