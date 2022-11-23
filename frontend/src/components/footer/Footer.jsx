@@ -1,25 +1,18 @@
 import React from 'react';
 import { useState, useEffect } from 'react';
 // TODO: Make footer links working
-import { Link as RouteLink } from 'react-router-dom'; 
-import {
-  Box,
-  Container,
-  Grid,
-  Link,
-} from '@mui/material';
+import { Link as RouteLink } from 'react-router-dom';
+import { Box, Container, Grid, Link } from '@mui/material';
 
 const styles = {
   root: {
-    marginTop: '60px'
+    marginTop: '60px',
   },
 };
 
-
 // TODO: Make footer viable for my page (change links, grids, think of what i wanna put here)
 function Footer() {
-
-  const [isLogged, setLogged] = useState(false);  
+  const [isLogged, setLogged] = useState(false);
 
   useEffect(() => {
     if (localStorage.getItem('token')) {
@@ -29,81 +22,71 @@ function Footer() {
 
   const handleLogout = () => {
     localStorage.removeItem('token');
-    setLogged(current => !current);
-  }
+    setLogged((current) => !current);
+  };
 
   return (
     <div style={styles.root}>
       <Box
-      px={{ xs: 3, sm: 10}}
-      py={{ xs: 5, sm: 10 }}
-      bgcolor='text.secondary' color='white'>
+        px={{ xs: 3, sm: 10 }}
+        py={{ xs: 5, sm: 10 }}
+        bgcolor="text.secondary"
+        color="white"
+      >
         <Container>
           <Grid container spacing={5}>
-
             <Grid item xs={12} sm={4}>
               <Box borderBottom={1}>Help</Box>
               <Box pt={1}>
-                <Link color='inherit'>
-                  Contact
-                </Link>
+                <Link color="inherit">Contact</Link>
               </Box>
               <Box>
-                <Link color='inherit'>
-                  Support
-                </Link>
+                <Link color="inherit">Support</Link>
               </Box>
               <Box>
-                <Link color='inherit'>
-                  Privacy
-                </Link>
+                <Link color="inherit">Privacy</Link>
               </Box>
             </Grid>
-            
+
             <Grid item xs={12} sm={4}>
               <Box borderBottom={1}>Account</Box>
               <Box pt={1}>
-                { isLogged 
-                ? <Link color='inherit' onClick={handleLogout}>Logout</Link> 
-                : <Link color='inherit' href='/login'>Login</Link>
-                }
+                {isLogged ? (
+                  <Link color="inherit" onClick={handleLogout}>
+                    Logout
+                  </Link>
+                ) : (
+                  <Link color="inherit" href="/login">
+                    Login
+                  </Link>
+                )}
               </Box>
               <Box>
-                <Link color='inherit' href='/register'>
+                <Link color="inherit" href="/register">
                   Register
                 </Link>
               </Box>
             </Grid>
-            
+
             <Grid item xs={12} sm={4}>
               <Box borderBottom={1}>Help</Box>
               <Box pt={1}>
-                <Link color='inherit'>  
-                  Contact
-                </Link>
+                <Link color="inherit">Contact</Link>
               </Box>
               <Box>
-                <Link color='inherit'>
-                  Support
-                </Link>
+                <Link color="inherit">Support</Link>
               </Box>
               <Box>
-                <Link color='inherit'>
-                  Privacy
-                </Link>
+                <Link color="inherit">Privacy</Link>
               </Box>
             </Grid>
-            
           </Grid>
 
-          <Box
-          textAlign='center'
-          pt={{ xs: 5, sm: 10 }}
-          pb={{ xs: 5, sm: 0 }}>
+          <Box textAlign="center" pt={{ xs: 5, sm: 10 }} pb={{ xs: 5, sm: 0 }}>
             Made by Oskar Krupa, {new Date().getFullYear()}
           </Box>
         </Container>
-      </Box>    
+      </Box>
     </div>
   );
 }

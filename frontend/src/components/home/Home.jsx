@@ -1,4 +1,4 @@
-import React, { useState, useEffect } from "react";
+import React, { useState, useEffect } from 'react';
 import {
   Container,
   Grid,
@@ -75,45 +75,60 @@ const styles = {
 
   underline: {
     textDecoration: 'underline',
-  }
+  },
 };
 
-
 function Home() {
-
   const [checked, setChecked] = useState(false);
   useEffect(() => {
     setChecked(true);
-  }, [])
+  }, []);
 
   return (
     <div style={styles.root}>
       <Collapse
-      in={checked}
-      {...(checked ? { timeout: 2000 } : {})}
-      collapsedSize={150}
+        in={checked}
+        {...(checked ? { timeout: 2000 } : {})}
+        collapsedSize={150}
       >
         <Box styles={styles.welcomeBox}>
-          <h1 style={styles.welcomeText}>Welcome to<br /><span style={styles.blood}>blood</span>alyze.</h1>
+          <h1 style={styles.welcomeText}>
+            Welcome to
+            <br />
+            <span style={styles.blood}>blood</span>alyze.
+          </h1>
         </Box>
         <Container style={styles.scrollButton}>
-          <Scroll to='description' smooth={true}>
+          <Scroll to="description" smooth={true}>
             <IconButton>
-                <ExpandMoreIcon style={styles.goDown} />
+              <ExpandMoreIcon style={styles.goDown} />
             </IconButton>
           </Scroll>
         </Container>
       </Collapse>
-      <Container id='description' style={styles.descriptionContainer}>
-        <Grid container spacing={15} alignItems='flex-start'>
-          <Grid item component='h2' xs={12} md={6} style={styles.test}>
+      <Container id="description" style={styles.descriptionContainer}>
+        <Grid container spacing={15} alignItems="flex-start">
+          <Grid item component="h2" xs={12} md={6} style={styles.test}>
             <div style={styles.imageBox}></div>
-            <img src={HappyMan} alt='Happy man' style={styles.manImage}/>
+            <img src={HappyMan} alt="Happy man" style={styles.manImage} />
           </Grid>
           <Grid item xs={12} md={6}>
             <Paper elevation={10} style={styles.description}>
-              <div style={styles.descriptionTitle}>Why should you use this tool?</div>
-              <article style={styles.descriptionContent}>Our analyzer makes tracking your blood count results extremely easy. You can look for which elements of blood you are supposed to supplement, look for blood components which go beyond the norm, track your results on your registered account and compare it to your previous results.<br /><br /><span style={styles.underline}>Start your conscious health care now!</span></article>
+              <div style={styles.descriptionTitle}>
+                Why should you use this tool?
+              </div>
+              <article style={styles.descriptionContent}>
+                Our analyzer makes tracking your blood count results extremely
+                easy. You can look for which elements of blood you are supposed
+                to supplement, look for blood components which go beyond the
+                norm, track your results on your registered account and compare
+                it to your previous results.
+                <br />
+                <br />
+                <span style={styles.underline}>
+                  Start your conscious health care now!
+                </span>
+              </article>
             </Paper>
           </Grid>
         </Grid>

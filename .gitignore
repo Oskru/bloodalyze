@@ -229,4 +229,8 @@ jsconfig.json
 # Ignore code-workspaces
 *.code-workspace
 
+# Ignore Prettier config and ignore files
+.prettierrc
+.prettierignore
+
 # End of https://www.toptal.com/developers/gitignore/api/django,react,visualstudiocode,virtualenv,venv
