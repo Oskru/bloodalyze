@@ -64,7 +64,7 @@ function Loginform() {
 
   const onSubmit = async (data) => {
     delete data.rememberPassword;
-    console.log(data);
+
     try {
       const url = 'http://localhost:8000/api/auth';
       const { data: res } = await axios.post(url, data);

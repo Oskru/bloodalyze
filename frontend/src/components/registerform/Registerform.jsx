@@ -67,7 +67,7 @@ function Registerform() {
 
   const onSubmit = async (data) => {
     delete data.confirmPassword;
-    console.log(data);
+
     try {
       const url = 'http://localhost:8000/api/users';
       const { data: res } = await axios.post(url, data);
