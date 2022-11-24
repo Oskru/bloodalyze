@@ -4,7 +4,8 @@ import { Box, Container, Grid, Link } from '@mui/material';
 
 const styles = {
   root: {
-    marginTop: '60px',
+    marginTop: '50px',
+    width: '100%',
   },
 };
 

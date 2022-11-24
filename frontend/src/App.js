@@ -11,18 +11,22 @@ import BackgroundImage from './static/bg.jpg';
 
 const styles = {
   root: {
+    display: 'flex',
+    flexDirection: 'column',
+    flexWrap: 'no-wrap',
     minHeight: '100vh',
     backgroundImage: `url(${BackgroundImage})`,
     backgroundRepeat: 'no-repeat',
     backgroundSize: 'cover',
     fontFamily: 'Nunito',
     overflow: 'hidden',
-  }
+  },
+  spacer: {
+    flex: 1,
+  },
 };
 
 function App() {
-
-  // Implement user login logic to other components
   const [user, setUser] = React.useState(null);
   
   window.onbeforeunload = function () {
@@ -32,13 +36,14 @@ function App() {
   return (
     <div style={styles.root}>
       <Navbar user={user} setUser={setUser} />
-      <Routes>
-        <Route exact path='/' element={<Home />}></Route>
-        <Route exact path='/login' element={<Loginform user={user} setUser={setUser} />}></Route>
-        <Route exact path='/register' element={<Registerform user={user} setUser={setUser} />}></Route>
-        <Route path='*' element={<Notfound />}></Route>
-      </Routes>
-      <Footer user={user} />
+        <Routes>
+          <Route exact path='/' element={<Home />}></Route>
+          <Route exact path='/login' element={<Loginform user={user} setUser={setUser} />}></Route>
+          <Route exact path='/register' element={<Registerform user={user} setUser={setUser} />}></Route>
+          <Route path='*' element={<Notfound />}></Route>
+        </Routes>
+        <div style={styles.spacer}></div>
+        <Footer user={user} />
     </div>
   );
 }
