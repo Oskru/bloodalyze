@@ -8,9 +8,9 @@ import {
   Box,
 } from '@mui/material';
 
-import { NavLink, useNavigate } from 'react-router-dom';
+import { NavLink } from 'react-router-dom';
 import BloodtypeIcon from '@mui/icons-material/Bloodtype';
-import { useEffect, useState } from 'react';
+import { useEffect } from 'react';
 
 const styles = {
   appBar: {
@@ -27,18 +27,16 @@ const styles = {
   },
 };
 
-function Navbar() {
-  const [isLogged, setLogged] = useState(false);
-
+function Navbar(props) {
   useEffect(() => {
     if (localStorage.getItem('token')) {
-      setLogged(() => true);
+      props.setUser(() => true);
     }
-  }, []);
+  }, [props]);
 
   const handleLogout = () => {
     localStorage.removeItem('token');
-    setLogged((current) => !current);
+    props.setUser((current) => !current);
   };
 
   return (
@@ -73,7 +71,7 @@ function Navbar() {
           >
             <Button color="inherit">Contact</Button>
             <Button color="inherit">About</Button>
-            {isLogged ? (
+            {props.user ? (
               <Button
                 onClick={handleLogout}
                 to="/logout"

@@ -20,6 +20,9 @@ const styles = {
 };
 
 function App() {
+
+  // Implement user login logic to other components
+  const [user, setUser] = React.useState(null);
   
   window.onbeforeunload = function () {
     window.scrollTo(0, 0);
@@ -27,13 +30,13 @@ function App() {
 
   return (
     <div style={styles.root}>
-      <Navbar />
+      <Navbar user={user} setUser={setUser} />
       <Routes>
         <Route exact path='/' element={<Home />}></Route>
-        <Route exact path='/login' element={<Loginform />}></Route>
-        <Route exact path='/register' element={<Registerform />}></Route>
+        <Route exact path='/login' element={<Loginform user={user} setUser={setUser} />}></Route>
+        <Route exact path='/register' element={<Registerform user={user} setUser={setUser} />}></Route>
       </Routes>
-      <Footer />
+      <Footer user={user} />
     </div>
   );
 }

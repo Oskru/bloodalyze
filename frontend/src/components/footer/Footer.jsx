@@ -1,7 +1,5 @@
 import React from 'react';
-import { useState, useEffect } from 'react';
 // TODO: Make footer links working
-import { Link as RouteLink } from 'react-router-dom';
 import { Box, Container, Grid, Link } from '@mui/material';
 
 const styles = {
@@ -11,18 +9,10 @@ const styles = {
 };
 
 // TODO: Make footer viable for my page (change links, grids, think of what i wanna put here)
-function Footer() {
-  const [isLogged, setLogged] = useState(false);
-
-  useEffect(() => {
-    if (localStorage.getItem('token')) {
-      setLogged(() => true);
-    }
-  }, []);
-
+function Footer(props) {
   const handleLogout = () => {
     localStorage.removeItem('token');
-    setLogged((current) => !current);
+    props.setUser((current) => !current);
   };
 
   return (
@@ -51,7 +41,7 @@ function Footer() {
             <Grid item xs={12} sm={4}>
               <Box borderBottom={1}>Account</Box>
               <Box pt={1}>
-                {isLogged ? (
+                {props.user ? (
                   <Link color="inherit" onClick={handleLogout}>
                     Logout
                   </Link>

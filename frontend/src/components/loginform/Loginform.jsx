@@ -51,7 +51,7 @@ const styles = {
   },
 };
 
-function Loginform() {
+function Loginform(props) {
   const {
     register,
     handleSubmit,
@@ -69,6 +69,7 @@ function Loginform() {
       const url = 'http://localhost:8000/api/auth';
       const { data: res } = await axios.post(url, data);
       localStorage.setItem('token', res.data);
+      props.setUser(true);
       window.location = '/';
     } catch {
       if (
