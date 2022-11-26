@@ -8,6 +8,7 @@ import Notfound from './components/notfound/Notfound';
 import Footer from './components/footer/Footer';
 import { Routes, Route } from 'react-router-dom';
 import BackgroundImage from './static/bg.jpg';
+import { createTheme, ThemeProvider } from '@mui/material/styles';
 
 const styles = {
   root: {
@@ -25,6 +26,15 @@ const styles = {
     flex: 1,
   },
 };
+const colors = createTheme({
+  palette: {
+    primary: {
+      main: '#db4d63',
+      light: '#f5677d',
+      dark: '#c2344a',
+    },
+  },
+});
 
 function App() {
   const [user, setUser] = React.useState(null);
@@ -35,15 +45,17 @@ function App() {
 
   return (
     <div style={styles.root}>
-      <Navbar user={user} setUser={setUser} />
-        <Routes>
-          <Route exact path='/' element={<Home />}></Route>
-          <Route exact path='/login' element={<Loginform user={user} setUser={setUser} />}></Route>
-          <Route exact path='/register' element={<Registerform user={user} setUser={setUser} />}></Route>
-          <Route path='*' element={<Notfound />}></Route>
-        </Routes>
-        <div style={styles.spacer}></div>
-        <Footer user={user} />
+      <ThemeProvider theme={colors}>
+        <Navbar user={user} setUser={setUser} />
+          <Routes>
+            <Route exact path='/' element={<Home />}></Route>
+            <Route exact path='/login' element={<Loginform user={user} setUser={setUser} />}></Route>
+            <Route exact path='/register' element={<Registerform user={user} setUser={setUser} />}></Route>
+            <Route path='*' element={<Notfound />}></Route>
+          </Routes>
+          <div style={styles.spacer}></div>
+          <Footer user={user} />
+        </ThemeProvider>
     </div>
   );
 }
