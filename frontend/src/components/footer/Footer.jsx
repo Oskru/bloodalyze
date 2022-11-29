@@ -21,21 +21,21 @@ function Footer(props) {
       <Box
         px={{ xs: 3, sm: 10 }}
         py={{ xs: 5, sm: 10 }}
-        bgcolor="text.secondary"
-        color="white"
+        bgcolor='text.secondary'
+        color='white'
       >
         <Container>
           <Grid container spacing={5}>
             <Grid item xs={12} sm={4}>
               <Box borderBottom={1}>Help</Box>
               <Box pt={1}>
-                <Link color="inherit">Contact</Link>
+                <Link color='inherit'>Contact</Link>
               </Box>
               <Box>
-                <Link color="inherit">Support</Link>
+                <Link color='inherit'>Support</Link>
               </Box>
               <Box>
-                <Link color="inherit">Privacy</Link>
+                <Link color='inherit'>Privacy</Link>
               </Box>
             </Grid>
 
@@ -43,17 +43,17 @@ function Footer(props) {
               <Box borderBottom={1}>Account</Box>
               <Box pt={1}>
                 {props.user ? (
-                  <Link color="inherit" onClick={handleLogout}>
+                  <Link color='inherit' onClick={handleLogout} href='/'>
                     Logout
                   </Link>
                 ) : (
-                  <Link color="inherit" href="/login">
+                  <Link color='inherit' href='/login'>
                     Login
                   </Link>
                 )}
               </Box>
               <Box>
-                <Link color="inherit" href="/register">
+                <Link color='inherit' href='/register'>
                   Register
                 </Link>
               </Box>
@@ -62,18 +62,18 @@ function Footer(props) {
             <Grid item xs={12} sm={4}>
               <Box borderBottom={1}>Help</Box>
               <Box pt={1}>
-                <Link color="inherit">Contact</Link>
+                <Link color='inherit'>Contact</Link>
               </Box>
               <Box>
-                <Link color="inherit">Support</Link>
+                <Link color='inherit'>Support</Link>
               </Box>
               <Box>
-                <Link color="inherit">Privacy</Link>
+                <Link color='inherit'>Privacy</Link>
               </Box>
             </Grid>
           </Grid>
 
-          <Box textAlign="center" pt={{ xs: 5, sm: 10 }} pb={{ xs: 5, sm: 0 }}>
+          <Box textAlign='center' pt={{ xs: 5, sm: 10 }} pb={{ xs: 5, sm: 0 }}>
             Made by Oskar Krupa, {new Date().getFullYear()}
           </Box>
         </Container>
