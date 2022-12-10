@@ -48,5 +48,5 @@ Please note: The following screenshots are for reference only and may not repres
 If you have any questions or issues with Bloodalyze, please contact Oskru via LinkedIn:
 
 <a href="https://www.linkedin.com/in/oskar-krupa-a79314205/">
-  <img src="https://user-images.githubusercontent.com/78699146/169061619-2c12e6d9-e667-4668-a136-6718719f8cfb.svg" alt="LinkedIn icon" />
+  <img src="https://user-images.githubusercontent.com/78699146/169061619-2c12e6d9-e667-4668-a136-6718719f8cfb.svg" alt="LinkedIn icon" height="40" width="40" />
 </a>
