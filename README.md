@@ -36,11 +36,17 @@ Please note: The following screenshots are for reference only and may not repres
 - [Screenshot 1: Dashboard]
 ![image](https://user-images.githubusercontent.com/78699146/206853231-5cd1e9b6-35dd-42e3-90c5-3e2e2188323b.png)
 
+- [Screenshot 2: Login page]
+![image](https://user-images.githubusercontent.com/78699146/206853417-e8a87020-e77c-4c1f-9be0-8611631bf6c7.png)
+
+- [Screenshot 3: Register page]
+![image](https://user-images.githubusercontent.com/78699146/206853439-dbec6f1c-1fdf-4ed1-8603-e1375b316707.png)
+
 
 ## Support
 
 If you have any questions or issues with Bloodalyze, please contact Oskru via LinkedIn:
 
-<a href="https://www.linkedin.com/in/oskar-krupa-a79314205/" target="_blank">
-  <img src="https://user-images.githubusercontent.com/78699146/169061619-2c12e6d9-e667-4>
+<a href="https://www.linkedin.com/in/oskar-krupa-a79314205/">
+  <img src="https://user-images.githubusercontent.com/78699146/169061619-2c12e6d9-e667-4668-a136-6718719f8cfb.svg" alt="LinkedIn icon" />
 </a>
