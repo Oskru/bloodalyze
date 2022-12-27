@@ -4,6 +4,7 @@ import Navbar from './components/navbar/Navbar';
 import Home from './components/home/Home';
 import Loginform from './components/loginform/Loginform';
 import Registerform from './components/registerform/Registerform';
+import Addresult from './components/addresult/Addresult';
 import Notfound from './components/notfound/Notfound';
 import Footer from './components/footer/Footer';
 import { Routes, Route } from 'react-router-dom';
@@ -51,6 +52,9 @@ function App() {
             <Route exact path='/' element={<Home />}></Route>
             <Route exact path='/login' element={<Loginform user={user} setUser={setUser} />}></Route>
             <Route exact path='/register' element={<Registerform user={user} setUser={setUser} />}></Route>
+            {user 
+            ? <Route exact path='/addresult' element={<Addresult user={user} />}></Route> 
+            : <Route exact path='/addresult' element={<Registerform user={user} setUser={setUser} />}></Route>}
             <Route path='*' element={<Notfound />}></Route>
           </Routes>
           <div style={styles.spacer}></div>
