@@ -10,8 +10,9 @@ import {
   Checkbox,
   Button,
   FormControlLabel,
+  Typography,
 } from '@mui/material';
-import { useNavigate } from 'react-router-dom';
+import { useNavigate, Link } from 'react-router-dom';
 
 // At least: 8 chars, 1 uppercase, 1 number
 // Can contain special chars
@@ -98,32 +99,22 @@ function Registerform() {
           <form onSubmit={handleSubmit(onSubmit)}>
             <TextField
               type='text'
-              label='First name'
-              placeholder='Enter first name'
-              name='firstName'
+              label='Username'
+              placeholder='Enter username'
+              name='username'
               variant='standard'
               style={styles.applyMargin}
               fullWidth
-              {...register('firstName', {
-                required: 'First name is required',
+              {...register('username', {
+                required: 'Username is required',
+                pattern: {
+                  value: /^[a-zA-Z0-9]+$/,
+                  message: 'Username can only contain letters and numbers',
+                },
               })}
-              error={Boolean(errors.firstName)}
-              helperText={errors.firstName?.message}
+              error={Boolean(errors.username)}
+              helperText={errors.username?.message}
             />
-
-            <TextField
-              type='text'
-              label='Last name'
-              placeholder='Enter last name'
-              name='lastName'
-              variant='standard'
-              style={styles.applyMargin}
-              fullWidth
-              {...register('lastName', { required: 'Last name is required' })}
-              error={Boolean(errors.lastName)}
-              helperText={errors.lastName?.message}
-            />
-
             <TextField
               label='E-mail'
               placeholder='Enter e-mail'
@@ -141,7 +132,32 @@ function Registerform() {
               error={Boolean(errors.email)}
               helperText={errors.email?.message}
             />
-
+            <TextField
+              type='text'
+              label='First name'
+              placeholder='Enter first name'
+              name='firstName'
+              variant='standard'
+              style={styles.applyMargin}
+              fullWidth
+              {...register('firstName', {
+                required: 'First name is required',
+              })}
+              error={Boolean(errors.firstName)}
+              helperText={errors.firstName?.message}
+            />
+            <TextField
+              type='text'
+              label='Last name'
+              placeholder='Enter last name'
+              name='lastName'
+              variant='standard'
+              style={styles.applyMargin}
+              fullWidth
+              {...register('lastName', { required: 'Last name is required' })}
+              error={Boolean(errors.lastName)}
+              helperText={errors.lastName?.message}
+            />
             <TextField
               type='password'
               label='Password'
@@ -206,6 +222,10 @@ function Registerform() {
               Register an account
             </Button>
           </form>
+          {/* TODO: Make 'Sign in' color inherit from themeprovider */}
+          <Typography>
+            Already have an account? <Link to='/login'>Sign in</Link>
+          </Typography>
         </Paper>
       </Grid>
     </div>
