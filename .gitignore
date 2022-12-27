@@ -233,4 +233,7 @@ jsconfig.json
 .prettierrc
 .prettierignore
 
+# Ignore the static folder
+frontend/src/static/*
+
 # End of https://www.toptal.com/developers/gitignore/api/django,react,visualstudiocode,virtualenv,venv
