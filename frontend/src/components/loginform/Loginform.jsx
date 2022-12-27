@@ -20,7 +20,6 @@ const styles = {
   root: {
     fontFamily: 'Nunito',
     overflow: 'hidden',
-    height: '55vh',
   },
 
   mainGrid: {
@@ -29,7 +28,7 @@ const styles = {
   },
 
   paperContainer: {
-    height: '383px',
+    height: 'auto',
     width: '300px',
     margin: '20px auto',
     padding: '20px',
@@ -57,7 +56,7 @@ function Loginform(props) {
     try {
       const url = 'http://localhost:8000/api/auth';
       const { data: res } = await axios.post(url, data);
-      localStorage.setItem('token', res.data);
+      localStorage.setItem('token', res.data.token);
       props.setUser(true);
       window.location = '/';
     } catch {

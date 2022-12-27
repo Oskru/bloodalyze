@@ -1,12 +1,5 @@
-import React, { useState, useEffect } from 'react';
-import {
-  Container,
-  Grid,
-  Paper,
-  Box,
-  IconButton,
-  Collapse,
-} from '@mui/material';
+import React from 'react';
+import { Container, Grid, Paper, Box, IconButton } from '@mui/material';
 import ExpandMoreIcon from '@mui/icons-material/ExpandMore';
 import { Link as Scroll } from 'react-scroll';
 import HappyMan from './happy-man.jpg';
@@ -78,39 +71,30 @@ const styles = {
   },
 };
 
+// TODO: Add an alert of login/logout
 function Home() {
-  const [checked, setChecked] = useState(false);
-  useEffect(() => {
-    setChecked(true);
-  }, []);
-
+  // TODO: Fix the background image scrolling caused by Collapse component from Material UI
   return (
     <div style={styles.root}>
-      <Collapse
-        in={checked}
-        {...(checked ? { timeout: 2000 } : {})}
-        collapsedSize={150}
-      >
-        <Box styles={styles.welcomeBox}>
-          <h1 style={styles.welcomeText}>
-            Welcome to
-            <br />
-            <span style={styles.blood}>blood</span>alyze.
-          </h1>
-        </Box>
-        <Container style={styles.scrollButton}>
-          <Scroll to="description" smooth={true}>
-            <IconButton>
-              <ExpandMoreIcon style={styles.goDown} />
-            </IconButton>
-          </Scroll>
-        </Container>
-      </Collapse>
-      <Container id="description" style={styles.descriptionContainer}>
-        <Grid container spacing={15} alignItems="flex-start">
-          <Grid item component="h2" xs={12} md={6} style={styles.test}>
+      <Box styles={styles.welcomeBox}>
+        <h1 style={styles.welcomeText}>
+          Welcome to
+          <br />
+          <span style={styles.blood}>blood</span>alyze.
+        </h1>
+      </Box>
+      <Container style={styles.scrollButton}>
+        <Scroll to='description' smooth={true}>
+          <IconButton>
+            <ExpandMoreIcon style={styles.goDown} />
+          </IconButton>
+        </Scroll>
+      </Container>
+      <Container id='description' style={styles.descriptionContainer}>
+        <Grid container spacing={15} alignItems='flex-start'>
+          <Grid item component='h2' xs={12} md={6} style={styles.test}>
             <div style={styles.imageBox}></div>
-            <img src={HappyMan} alt="Happy man" style={styles.manImage} />
+            <img src={HappyMan} alt='Happy man' style={styles.manImage} />
           </Grid>
           <Grid item xs={12} md={6}>
             <Paper elevation={10} style={styles.description}>

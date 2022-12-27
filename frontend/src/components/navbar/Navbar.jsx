@@ -46,46 +46,46 @@ function Navbar(props) {
           <Box sx={{ justifyContent: 'left', flexGrow: 1 }}>
             <IconButton
               LinkComponent={NavLink}
-              to="/"
-              size="large"
-              edge="start"
-              color="inherit"
-              aria-label="logo"
+              to='/'
+              size='large'
+              edge='start'
+              color='inherit'
+              aria-label='logo'
             >
               <BloodtypeIcon />
             </IconButton>
           </Box>
           <Typography
-            variant="h6"
-            component="div"
+            variant='h6'
+            component='div'
             sx={{ flexGrow: 10000000, display: { xs: 'none', sm: 'block' } }}
           >
             BLOODALYZE
           </Typography>
           <Stack
-            direction="row"
-            justifyItems="self-end"
-            alignItems="self-end"
-            justifyContent="right"
+            direction='row'
+            justifyItems='self-end'
+            alignItems='self-end'
+            justifyContent='right'
             spacing={2}
           >
-            <Button color="inherit">Contact</Button>
-            <Button color="inherit">About</Button>
+            <Button color='inherit'>Contact</Button>
+            <Button color='inherit'>About</Button>
             {props.user ? (
               <Button
                 onClick={handleLogout}
-                to="/logout"
-                color="inherit"
-                variant="contained"
+                to='/logout'
+                color='inherit'
+                variant='contained'
               >
                 Logout
               </Button>
             ) : (
               <Button
                 LinkComponent={NavLink}
-                to="/login"
-                color="inherit"
-                variant="contained"
+                to='/login'
+                color='inherit'
+                variant='contained'
               >
                 Login
               </Button>
