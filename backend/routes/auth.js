@@ -3,6 +3,8 @@ const { User } = require('../models/user');
 const Joi = require('joi');
 const bcrypt = require('bcrypt');
 const { restart } = require('nodemon');
+const jwt = require('jsonwebtoken');
+const { sendConfirmationEmail } = require('../email');
 
 router.post('/', async (req, res) => {
   try {
@@ -21,6 +23,22 @@ router.post('/', async (req, res) => {
     );
     if (!validPassword)
       return res.status(401).send({ message: 'Invalid Email or Password' });
+
+    if (!user.confirmed) {
+      // Send email confirmation link again
+      jwt.sign(
+        { _id: user._id },
+        process.env.JWTEMAILKEY,
+        { expiresIn: '1d' },
+        (error, token) => {
+          if (error) {
+            return res.status(400).send({ message: error });
+          }
+          sendConfirmationEmail(req.body.email, token);
+        }
+      );
+      return res.status(401).send({ message: 'Please confirm your email' });
+    }
 
     const token = user.generateAuthToken();
     res.status(200).send({

@@ -10,11 +10,19 @@ const userSchema = new mongoose.Schema({
   lastName: { type: String, required: true },
   password: { type: String, required: true },
   results: [{ type: mongoose.Schema.Types.ObjectId, ref: 'result' }],
+  confirmed: { type: Boolean, default: false },
 });
 
 userSchema.methods.generateAuthToken = function () {
   const token = jwt.sign({ _id: this.id }, process.env.JWTPRIVATEKEY, {
     expiresIn: '7d',
+  });
+  return token;
+};
+
+userSchema.methods.generateEmailToken = function () {
+  const token = jwt.sign({ _id: this.id }, process.env.JWTEMAILKEY, {
+    expiresIn: '1d',
   });
   return token;
 };

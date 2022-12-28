@@ -1,6 +1,8 @@
 const router = require('express').Router();
 const { User, validate } = require('../models/user');
 const bcrypt = require('bcrypt');
+const jwt = require('jsonwebtoken');
+const { sendConfirmationEmail } = require('../email');
 
 router.post('/', async (req, res) => {
   try {
@@ -25,7 +27,21 @@ router.post('/', async (req, res) => {
     const salt = await bcrypt.genSalt(Number(process.env.SALT));
     const hashPassword = await bcrypt.hash(req.body.password, salt);
 
-    await new User({ ...req.body, password: hashPassword }).save();
+    const user = await new User({ ...req.body, password: hashPassword }).save();
+
+    // Send email confirmation link
+    jwt.sign(
+      { _id: user._id },
+      process.env.JWTEMAILKEY,
+      { expiresIn: '1d' },
+      (error, token) => {
+        if (error) {
+          return res.status(400).send({ message: error });
+        }
+        sendConfirmationEmail(req.body.email, token);
+      }
+    );
+
     res.status(201).send({ message: 'User created successfully' });
   } catch (error) {
     res
