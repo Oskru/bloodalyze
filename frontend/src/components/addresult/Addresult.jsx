@@ -1,5 +1,5 @@
 import React from 'react';
-import { useState } from 'react';
+import { useState, useEffect } from 'react';
 import {
   Grid,
   Paper,
@@ -7,6 +7,8 @@ import {
   Button,
   Select,
   MenuItem,
+  Alert,
+  IconButton,
 } from '@mui/material';
 import { useForm } from 'react-hook-form';
 import { DesktopDatePicker } from '@mui/x-date-pickers/DesktopDatePicker';
@@ -16,6 +18,8 @@ import { LocalizationProvider } from '@mui/x-date-pickers/LocalizationProvider/L
 import AddCircleIcon from '@mui/icons-material/AddCircle';
 import DeleteIcon from '@mui/icons-material/Delete';
 import axios from 'axios';
+import CloseIcon from '@mui/icons-material/Close';
+import Collapse from '@mui/material/Collapse';
 
 const styles = {
   paperContainer: {
@@ -106,6 +110,10 @@ function Addresult() {
   const [dateValue, setDateValue] = useState(dayjs());
 
   const [resultInputs, setResultInputs] = useState([]);
+
+  const [dataSent, setDataSent] = useState(false);
+
+  useEffect(() => {}, [dataSent]);
 
   // Select for result inputs
   const handleSelectChange = (event) => {
@@ -208,8 +216,6 @@ function Addresult() {
     }));
   };
 
-  const { submitError, setSubmitError } = useState('');
-
   const onSubmit = async (data) => {
     // Filter null values from textValue object
     const filteredTextValue = Object.entries(textValues).filter(
@@ -261,15 +267,14 @@ function Addresult() {
           Authorization: `Bearer ${token}`,
         },
       });
-      console.log(res);
-    } catch {
+      setDataSent(true);
+    } catch (err) {
       if (
-        error?.respons &&
-        error?.response.status >= 400 &&
-        error?.response.status <= 500
+        err?.response &&
+        err?.response.status >= 400 &&
+        err?.response.status <= 500
       ) {
-        // If error is from client side, set error message
-        setSubmitError(error?.response.data.message);
+        console.log(err.response.data);
       }
     }
   };
@@ -327,7 +332,25 @@ function Addresult() {
                 Add a test result&nbsp;&nbsp;
                 <AddCircleIcon fontSize='large' color='primary' />
               </div>
-              {/* TODO: Refractor other TextFields to be in match */}
+              <Collapse in={dataSent}>
+                <Alert
+                  action={
+                    <IconButton
+                      aria-label='close'
+                      color='inherit'
+                      size='small'
+                      onClick={() => {
+                        setDataSent(false);
+                      }}
+                    >
+                      <CloseIcon fontSize='inherit' />
+                    </IconButton>
+                  }
+                  sx={{ mb: 2 }}
+                >
+                  Successfully added test result!
+                </Alert>
+              </Collapse>
               <form onSubmit={handleSubmit(onSubmit)}>
                 <TextField
                   label='Test name'
@@ -403,11 +426,6 @@ function Addresult() {
                 >
                   Submit
                 </Button>
-                {submitError && (
-                  <p style={{ color: 'red', marginTop: '10px' }}>
-                    {submitError}
-                  </p>
-                )}
               </form>
             </Paper>
           </div>
