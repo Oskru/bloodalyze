@@ -25,10 +25,6 @@ Bloodalyze is a web app that helps you track and understand your blood count res
 2. Enter your blood count results into the app.
 3. View your blood count data in a graphical format and see how it changes over time.
 
-## About Bloodalyze
-
-Bloodalyze was created by Oskru, a web developer who saw a need for a simple, user-friendly tool that helps people track and understand their blood count data. Oskru is passionate about using technology to improve health and wellness, and is committed to continuing to develop and improve Bloodalyze to meet the needs of users.
-
 ## Screenshots
 
 Please note: The following screenshots are for reference only and may not represent the final look of the Bloodalyze website.
